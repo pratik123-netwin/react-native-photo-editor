@@ -41,6 +41,18 @@
             android:layout_height="wrap_content"
             android:text="@string/label_rectangle" />
 
+        <RadioButton
+            android:id="@+id/arrowRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_arrow" />
+
+        <RadioButton
+            android:id="@+id/crossRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_cross" />
+
     </RadioGroup>
 
     <SeekBar
