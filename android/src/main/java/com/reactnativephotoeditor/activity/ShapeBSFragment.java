@@ -62,9 +62,9 @@ public class ShapeBSFragment extends BottomSheetDialogFragment implements SeekBa
             } else if (checkedId == R.id.rectRadioButton) {
                 mProperties.onShapePicked(ShapeType.RECTANGLE);
             } else if (checkedId == R.id.arrowRadioButton) {
-                mProperties.onShapePicked(ShapeType.ARROW);
+                mProperties.onShapePicked(ShapeType.OVAL);
             } else if (checkedId == R.id.crossRadioButton) {
-                mProperties.onShapePicked(ShapeType.CROSS); 
+                mProperties.onShapePicked(ShapeType.OVAL); 
             } else {
                 mProperties.onShapePicked(ShapeType.BRUSH);
             }
