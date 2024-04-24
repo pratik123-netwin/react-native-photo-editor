@@ -38,20 +38,20 @@ class PhotoEditorModule(reactContext: ReactApplicationContext) : ReactContextBas
     activity.startActivityForResult(intent, EDIT_SUCCESSFUL)
   }
 
-  private val mActivityEventListener: ActivityEventListener = object : BaseActivityEventListener() {
-    override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, intent: Intent?) {
-      if (requestCode == EDIT_SUCCESSFUL) {
-        when (resultCode) {
-          ResponseCode.RESULT_OK -> {
-          val path = intent?.getStringExtra("path")
-          promise?.resolve("file://$path")
-          }
-          ResponseCode.RESULT_CANCELED -> {
-          promise?.reject("USER_CANCELLED", "User has cancelled", null)
-          }
-          ResponseCode.LOAD_IMAGE_FAILED -> {
-            val path = intent?.getStringExtra("path")
-            promise?.reject("LOAD_IMAGE_FAILED", "Load image failed: $path", null)
+private val mActivityEventListener: ActivityEventListener = object : BaseActivityEventListener() {
+override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, intent: Intent?) {
+if (requestCode == EDIT_SUCCESSFUL) {
+when (resultCode) {
+ResponseCode.RESULT_OK -> {
+val path = intent?.getStringExtra("path")
+promise?.resolve("file://$path")
+}
+ResponseCode.RESULT_CANCELED -> {
+promise?.reject("USER_CANCELLED", "User has cancelled", null)
+}
+ResponseCode.LOAD_IMAGE_FAILED -> {
+val path = intent?.getStringExtra("path")
+promise?.reject("LOAD_IMAGE_FAILED", "Load image failed: $path", null)
           }
           
         }
