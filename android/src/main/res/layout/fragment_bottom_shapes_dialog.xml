@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:text="@string/label_rectangle" />
 
-        <RadioButton
+        <!-- <RadioButton
             android:id="@+id/arrowRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             android:id="@+id/crossRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/label_cross" />
+            android:text="@string/label_cross" /> -->
 
     </RadioGroup>
 

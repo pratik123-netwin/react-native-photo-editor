@@ -69,15 +69,17 @@ public class ShapeBSFragment extends BottomSheetDialogFragment implements SeekBa
                 mProperties.onShapePicked(ShapeType.OVAL);
             } else if (checkedId == R.id.rectRadioButton) {
                 mProperties.onShapePicked(ShapeType.RECTANGLE);
-            } else if (checkedId == R.id.arrowRadioButton) {
-           //   mProperties.onShapePicked(ShapeType.Arrow()); // Handle Arrow shape
-              }else if (checkedId == R.id.crossRadioButton) {
-               // mProperties.onShapePicked(ShapeType.OVAL); 
-               String inputText = "X";
+            }
+        //      else if (checkedId == R.id.arrowRadioButton) {
+        //    //   mProperties.onShapePicked(ShapeType.Arrow()); // Handle Arrow shape
+        //       }else if (checkedId == R.id.crossRadioButton) {
+        //        // mProperties.onShapePicked(ShapeType.OVAL); 
+        //        String inputText = "X";
              
-                    mTextEditor.onDone(inputText, mColorCode);
+        //             mTextEditor.onDone(inputText, mColorCode);
                 
-            } else {
+        //     } 
+            else {
                 mProperties.onShapePicked(ShapeType.BRUSH);
             }
         });
