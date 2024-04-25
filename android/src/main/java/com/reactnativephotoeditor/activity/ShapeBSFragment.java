@@ -26,7 +26,7 @@ public class ShapeBSFragment extends BottomSheetDialogFragment implements SeekBa
     public interface TextEditor {
         void onDone(String inputText, int colorCode);
     }
-    
+
     public ShapeBSFragment() {
         // Required empty public constructor
     }
@@ -70,13 +70,13 @@ public class ShapeBSFragment extends BottomSheetDialogFragment implements SeekBa
             } else if (checkedId == R.id.rectRadioButton) {
                 mProperties.onShapePicked(ShapeType.RECTANGLE);
             } else if (checkedId == R.id.arrowRadioButton) {
-              mProperties.onShapePicked(ShapeType.Arrow()); // Handle Arrow shape
+           //   mProperties.onShapePicked(ShapeType.Arrow()); // Handle Arrow shape
               }else if (checkedId == R.id.crossRadioButton) {
                // mProperties.onShapePicked(ShapeType.OVAL); 
                String inputText = "X";
-                if (!TextUtils.isEmpty(inputText)) {
+             
                     mTextEditor.onDone(inputText, mColorCode);
-                }
+                
             } else {
                 mProperties.onShapePicked(ShapeType.BRUSH);
             }
