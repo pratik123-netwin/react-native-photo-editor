@@ -72,7 +72,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
   private var mRootView: ConstraintLayout? = null
   private val mConstraintSet = ConstraintSet()
   private var mIsFilterVisible = false
-
+  private var mStickerFragmentCross: StickerFragment? = null
   @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -92,16 +92,29 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
 //      print("stick: $stickers")
 //    }
 
+
+    val cross =
+      value?.getStringArrayList("cross")?.plus(
+        assets.list("cross")!!
+          .map { item -> "/android_asset/cross/$item" }) as ArrayList<String>
+
+
     mPropertiesBSFragment = PropertiesBSFragment()
     mPropertiesBSFragment!!.setPropertiesChangeListener(this)
 
     mStickerFragment = StickerFragment()
     mStickerFragment!!.setStickerListener(this)
 
+    mStickerFragmentCross = StickerFragment()
+    mStickerFragmentCross!!.setStickerListener(this)
+
 //    val stream: InputStream = assets.open("image.png")
 //    val d = Drawable.createFromStream(stream, null)
-    mStickerFragment!!.setData(stickers)
 
+
+    mStickerFragment!!.setData(stickers)
+    mStickerFragmentCross!!.setData(cross)
+    
     mShapeBSFragment = ShapeBSFragment()
     mShapeBSFragment!!.setPropertiesChangeListener(this)
 
@@ -378,6 +391,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
         showFilter(true)
       }
       ToolType.STICKER -> showBottomSheetDialogFragment(mStickerFragment)
+      ToolType.CROSS -> showBottomSheetDialogFragmentForCross(mStickerFragmentCross)
     }
   }
 
@@ -414,6 +428,41 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
     TransitionManager.beginDelayedTransition(mRootView!!, changeBounds)
     mConstraintSet.applyTo(mRootView)
   }
+
+   private fun showBottomSheetDialogFragmentForCross(fragment: BottomSheetDialogFragment?) {
+    if (fragment == null || fragment.isAdded) {
+      return
+    }
+    fragment.show(supportFragmentManager, fragment.tag)
+  }
+
+  fun showFilter(isVisible: Boolean) {
+    mIsFilterVisible = isVisible
+    mConstraintSet.clone(mRootView)
+    if (isVisible) {
+      mConstraintSet.clear(mRvFilters!!.id, ConstraintSet.START)
+      mConstraintSet.connect(
+        mRvFilters!!.id, ConstraintSet.START,
+        ConstraintSet.PARENT_ID, ConstraintSet.START
+      )
+      mConstraintSet.connect(
+        mRvFilters!!.id, ConstraintSet.END,
+        ConstraintSet.PARENT_ID, ConstraintSet.END
+      )
+    } else {
+      mConstraintSet.connect(
+        mRvFilters!!.id, ConstraintSet.START,
+        ConstraintSet.PARENT_ID, ConstraintSet.END
+      )
+      mConstraintSet.clear(mRvFilters!!.id, ConstraintSet.END)
+    }
+    val changeBounds = ChangeBounds()
+    changeBounds.duration = 350
+    changeBounds.interpolator = AnticipateOvershootInterpolator(1.0f)
+    TransitionManager.beginDelayedTransition(mRootView!!, changeBounds)
+    mConstraintSet.applyTo(mRootView)
+  }
+
 
   override fun onBackPressed() {
     if (mIsFilterVisible) {

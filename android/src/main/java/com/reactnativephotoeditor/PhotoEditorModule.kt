@@ -31,12 +31,15 @@ class PhotoEditorModule(reactContext: ReactApplicationContext) : ReactContextBas
 
     val path = options?.getString("path")
     val stickers = options?.getArray("stickers") as ReadableArray
+    val cross = options?.getArray("cross") as ReadableArray
 
     intent.putExtra("path", path)
     intent.putExtra("stickers", stickers.toArrayList())
+    intent.putExtra("cross", cross.toArrayList())
 
     activity.startActivityForResult(intent, EDIT_SUCCESSFUL)
   }
+
 
   private val mActivityEventListener: ActivityEventListener = object : BaseActivityEventListener() {
     override fun onActivityResult(activity: Activity, requestCode: Int, resultCode: Int, intent: Intent?) {
