@@ -271,10 +271,8 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
       val path: File = Environment.getExternalStoragePublicDirectory(
         Environment.DIRECTORY_PICTURES
       )
-
-      val homechekDir = File(rootDir, "Homecheck/Pictures")
-      homechekDir.mkdirs()
-      val file = File(homechekDir, fileName)
+      
+      val file = File(path, fileName)
       path.mkdirs()
 
       mPhotoEditor!!.saveAsFile(file.absolutePath, object : OnSaveListener {
