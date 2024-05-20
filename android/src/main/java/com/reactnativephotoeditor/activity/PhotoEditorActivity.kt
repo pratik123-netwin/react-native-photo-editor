@@ -272,8 +272,9 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
         Environment.DIRECTORY_PICTURES
       )
       
-      val file = File(path, fileName)
-      path.mkdirs()
+      val homechekDir = File(path, "Homechek/Pictures")
+        homechekDir.mkdirs();
+        val file = File(homechekDir, fileName)
 
       mPhotoEditor!!.saveAsFile(file.absolutePath, object : OnSaveListener {
         override fun onSuccess(@NonNull imagePath: String) {
