@@ -380,8 +380,8 @@ class ZLImageStickerView: UIView, ZLStickerViewAdditional {
             let w = h * whRatio
             size = CGSize(width: w, height: h)
         }
-        size.width += ZLImageStickerView.edgeInset * 1
-        size.height += ZLImageStickerView.edgeInset * 1
+        size.width += ZLImageStickerView.edgeInset * 0.5
+        size.height += ZLImageStickerView.edgeInset * 0.5
         return size
     }
     
