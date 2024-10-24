@@ -58,7 +58,7 @@ protocol ZLStickerViewAdditional: NSObject {
 
 class ZLImageStickerView: UIView, ZLStickerViewAdditional {
 
-    static let edgeInset: CGFloat = 5
+    static let edgeInset: CGFloat = 10
     
     static let borderWidth = 1 / UIScreen.main.scale
     
