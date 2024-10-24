@@ -368,7 +368,7 @@ class ZLImageStickerView: UIView, ZLStickerViewAdditional {
     
     class func calculateSize(image: UIImage, width: CGFloat) -> CGSize {
         let maxSide = width / 2
-        let minSide: 50
+        let minSide: CGFloat = 50
         let whRatio = image.size.width / image.size.height
         var size: CGSize = .zero
         if whRatio >= 1 {
