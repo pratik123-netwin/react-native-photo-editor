@@ -262,7 +262,7 @@ class ZLImageStickerView: UIView, ZLStickerViewAdditional {
         if isOn, !self.onOperation {
             self.onOperation = true
             self.cleanTimer()
-            self.layer.borderColor = UIColor.white.cgColor
+            self.layer.borderColor = UIColor.black.cgColor
             self.superview?.bringSubviewToFront(self)
             self.delegate?.stickerBeginOperation(self)
         } else if !isOn, self.onOperation {
@@ -300,7 +300,7 @@ class ZLImageStickerView: UIView, ZLStickerViewAdditional {
     
     func startTimer() {
         self.cleanTimer()
-        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderColor = UIColor.black.cgColor
         self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(hideBorder), userInfo: nil, repeats: false)
         RunLoop.current.add(self.timer!, forMode: .default)
     }
@@ -380,8 +380,8 @@ class ZLImageStickerView: UIView, ZLStickerViewAdditional {
             let w = h * whRatio
             size = CGSize(width: w, height: h)
         }
-        size.width += ZLImageStickerView.edgeInset * 2
-        size.height += ZLImageStickerView.edgeInset * 2
+        size.width += ZLImageStickerView.edgeInset * 1
+        size.height += ZLImageStickerView.edgeInset * 1
         return size
     }
     

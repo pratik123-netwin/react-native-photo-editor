@@ -272,7 +272,7 @@ class ZLTextStickerView: UIView, ZLStickerViewAdditional {
         if isOn, !self.onOperation {
             self.onOperation = true
             self.cleanTimer()
-            self.borderView.layer.borderColor = UIColor.white.cgColor
+            self.borderView.layer.borderColor = UIColor.black.cgColor
             self.superview?.bringSubviewToFront(self)
             self.delegate?.stickerBeginOperation(self)
         } else if !isOn, self.onOperation {
@@ -310,7 +310,7 @@ class ZLTextStickerView: UIView, ZLStickerViewAdditional {
     
     func startTimer() {
         self.cleanTimer()
-        self.borderView.layer.borderColor = UIColor.white.cgColor
+        self.borderView.layer.borderColor = UIColor.black.cgColor
         self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(hideBorder), userInfo: nil, repeats: false) 
         RunLoop.current.add(self.timer!, forMode: .default)
     }
