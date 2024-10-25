@@ -4,7 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="#B3000000"
+  android:background="#B3FFFFFF"
   focusableInTouchMode="true"
   android:focusable="true" 
   android:orientation="vertical">
@@ -53,7 +53,7 @@
       android:layout_height="wrap_content"
       android:orientation="horizontal"
       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-      tools:background="@android:color/white"
+      tools:background="@android:color/black"
       tools:listitem="@layout/color_picker_item_list" />
 
   </RelativeLayout>
