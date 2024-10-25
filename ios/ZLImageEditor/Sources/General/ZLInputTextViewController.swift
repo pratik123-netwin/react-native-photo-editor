@@ -102,7 +102,7 @@ class ZLInputTextViewController: UIViewController {
         let doneBtnW = localLanguageTextValue(.done).boundingRect(font: ZLImageEditorLayout.bottomToolTitleFont, limitSize: CGSize(width: .greatestFiniteMagnitude, height: ZLImageEditorLayout.bottomToolBtnH)).width + 20
         self.doneBtn.frame = CGRect(x: view.bounds.width - 20 - doneBtnW, y: btnY, width: doneBtnW, height: ZLImageEditorLayout.bottomToolBtnH)
         
-        self.textView.frame = CGRect(x: 20, y: cancelBtn.frame.maxY + 40, width: view.bounds.width - 40, height: 150)
+        self.textView.frame = CGRect(x: 20, y: cancelBtn.frame.maxY + 50, width: view.bounds.width - 40, height: 150)
         
         if let index = ZLImageEditorConfiguration.default().textStickerTextColors.firstIndex(where: { $0 == self.currentTextColor}) {
             self.collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: false)
