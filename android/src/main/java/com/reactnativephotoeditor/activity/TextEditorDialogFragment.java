@@ -58,7 +58,7 @@ public class TextEditorDialogFragment extends DialogFragment {
     //Show dialog with default text input as empty and text color white
     public static TextEditorDialogFragment show(@NonNull AppCompatActivity appCompatActivity) {
         return show(appCompatActivity,
-                "", ContextCompat.getColor(appCompatActivity, R.color.white));
+                "", ContextCompat.getColor(appCompatActivity, R.color.black));
     }
 
     @Override
