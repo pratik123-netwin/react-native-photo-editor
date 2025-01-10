@@ -271,7 +271,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
       val path: File = Environment.getExternalStoragePublicDirectory(
         Environment.DIRECTORY_PICTURES
       )
-      
+
       val homechekDir = File(path, "Total Inspectware/Pictures")
         homechekDir.mkdirs();
         val file = File(homechekDir, fileName)
@@ -330,6 +330,9 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
   }
 
   override fun onStickerClick(bitmap: Bitmap) {
+    mShapeBuilder = mShapeBuilder!!.withShapeType(ShapeType.NONE)
+    mPhotoEditor!!.setShape(mShapeBuilder)
+
     mPhotoEditor!!.addImage(bitmap)
     mTxtCurrentTool!!.setText(R.string.label_sticker)
   }
@@ -357,7 +360,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
     when (toolType) {
       ToolType.SHAPE -> {
         mPhotoEditor!!.setBrushDrawingMode(true)
-        mShapeBuilder = ShapeBuilder()
+        mShapeBuilder = ShapeBuilder().withShapeSize(5.0f)
         mPhotoEditor!!.setShape(mShapeBuilder)
         mTxtCurrentTool!!.setText(R.string.label_shape)
         showBottomSheetDialogFragment(mShapeBSFragment)
