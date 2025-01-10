@@ -330,9 +330,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
   }
 
   override fun onStickerClick(bitmap: Bitmap) {
-//    mShapeBuilder = mShapeBuilder!!.withShapeType(ShapeType.NONE)
-//    mPhotoEditor!!.setShape(mShapeBuilder)
-
+    mPhotoEditor!!.setBrushDrawingMode(false)
     mPhotoEditor!!.addImage(bitmap)
     mTxtCurrentTool!!.setText(R.string.label_sticker)
   }
