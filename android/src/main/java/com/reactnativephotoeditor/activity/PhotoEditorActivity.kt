@@ -272,7 +272,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
         Environment.DIRECTORY_PICTURES
       )
       
-      val homechekDir = File(path, "Homechek/Pictures")
+      val homechekDir = File(path, "Total Inspectware/Pictures")
         homechekDir.mkdirs();
         val file = File(homechekDir, fileName)
 
