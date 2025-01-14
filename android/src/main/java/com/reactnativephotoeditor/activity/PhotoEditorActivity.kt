@@ -330,7 +330,6 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
   }
 
   override fun onStickerClick(bitmap: Bitmap) {
-    mPhotoEditor!!.setBrushDrawingMode(false)
     mPhotoEditor!!.addImage(bitmap)
     mTxtCurrentTool!!.setText(R.string.label_sticker)
   }
@@ -358,7 +357,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
     when (toolType) {
       ToolType.SHAPE -> {
         mPhotoEditor!!.setBrushDrawingMode(true)
-        mShapeBuilder = ShapeBuilder().withShapeSize(5.0f)
+        mShapeBuilder = ShapeBuilder()
         mPhotoEditor!!.setShape(mShapeBuilder)
         mTxtCurrentTool!!.setText(R.string.label_shape)
         showBottomSheetDialogFragment(mShapeBSFragment)
