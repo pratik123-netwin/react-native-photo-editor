@@ -211,6 +211,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
     textEditorDialogFragment.setOnTextEditorListener { inputText: String?, newColorCode: Int ->
       val styleBuilder = TextStyleBuilder()
       styleBuilder.withTextColor(newColorCode)
+      styleBuilder.withTextSize(24f)
       mPhotoEditor!!.editText(rootView, inputText, styleBuilder)
       mTxtCurrentTool!!.setText(R.string.label_text)
     }
@@ -368,6 +369,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
         textEditorDialogFragment.setOnTextEditorListener { inputText: String?, colorCode: Int ->
           val styleBuilder = TextStyleBuilder()
           styleBuilder.withTextColor(colorCode)
+          styleBuilder.withTextSize(24f)
           mPhotoEditor!!.addText(inputText, styleBuilder)
           mTxtCurrentTool!!.setText(R.string.label_text)
         }
