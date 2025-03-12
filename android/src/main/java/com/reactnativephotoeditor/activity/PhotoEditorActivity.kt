@@ -277,31 +277,35 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
         homechekDir.mkdirs();
         val file = File(homechekDir, fileName)
 
-      mPhotoEditor!!.saveAsFile(file.absolutePath, object : OnSaveListener {
-        override fun onSuccess(@NonNull imagePath: String) {
-          hideLoading()
-          val intent = Intent()
-          intent.putExtra("path", imagePath)
-          setResult(ResponseCode.RESULT_OK, intent)
-          finish()
-        }
-
-        override fun onFailure(@NonNull exception: Exception) {
-          hideLoading()
-          if (!hasStoragePermission) {
-            requestPer()
-          } else {
-            mPhotoEditorView?.let {
-              val snackBar = Snackbar.make(
-                it, R.string.save_error,
-                Snackbar.LENGTH_SHORT)
-              snackBar.setBackgroundTint(Color.WHITE)
-              snackBar.setActionTextColor(Color.BLACK)
-              snackBar.setAction("Ok", null).show()
+      mPhotoEditorView?.post {
+        mPhotoEditor!!.saveAsFile(file.absolutePath, object : OnSaveListener {
+            override fun onSuccess(@NonNull imagePath: String) {
+                hideLoading()
+                val intent = Intent()
+                intent.putExtra("path", imagePath)
+                setResult(ResponseCode.RESULT_OK, intent)
+                finish()
             }
-          }
-        }
-      })
+
+            override fun onFailure(@NonNull exception: Exception) {
+                hideLoading()
+                if (!hasStoragePermission) {
+                    requestPer()
+                } else {
+                    mPhotoEditorView?.let {
+                        val snackBar = Snackbar.make(
+                            it, R.string.save_error,
+                            Snackbar.LENGTH_SHORT
+                        )
+                        snackBar.setBackgroundTint(Color.WHITE)
+                        snackBar.setActionTextColor(Color.BLACK)
+                        snackBar.setAction("Ok", null).show()
+                    }
+                }
+            }
+        })
+      }
+
     } else {
       requestPer()
     }
